@@ -15,7 +15,7 @@ const rejectFilterBtn = document.getElementById('reject-filter-btn');
 const mainContainer = document.getElementById('main');
 const allCards = document.getElementById('allCards');
 const emptySection = document.getElementById('empty-section');
-const filteredSection = document.getElementById('filtered-section');
+const filterSection = document.getElementById('filter-section');
 
 console.log(interviewList.length)
 console.log(rejectList.length)
@@ -55,31 +55,31 @@ function toggleStyle(id){
     selected.classList.add("bg-primary", "text-white", "font-semibold");
 
     //stored the id;
-    const currentStatus = id;
+    currentStatus = id;
 
     //Visible section
     if (id == 'all-filter-btn') {
         allCards.classList.remove('hidden');
-        filteredSection.classList.add('hidden')
+        filterSection.classList.add('hidden')
         emptySection.classList.add('hidden');
     } else if (id == 'interview-filter-btn') {
         allCards.classList.add('hidden');
         if(interviewList.length == 0){
             emptySection.classList.remove('hidden')
-            filteredSection.classList.add('hidden')
+            filterSection.classList.add('hidden')
         }else if(interviewList.length !== 0){
             emptySection.classList.add('hidden')
-            filteredSection.classList.remove('hidden')
+            filterSection.classList.remove('hidden')
         }
         renderInterview();
     } else if (id == 'reject-filter-btn') {
         allCards.classList.add('hidden');
         if(rejectList.length == 0){
             emptySection.classList.remove('hidden')
-            filteredSection.classList.add('hidden')
+            filterSection.classList.add('hidden')
         }else if(rejectList.length !== 0){
             emptySection.classList.add('hidden')
-            filteredSection.classList.remove('hidden')
+            filterSection.classList.remove('hidden')
         }
         renderRejected();
     }
@@ -159,11 +159,15 @@ mainContainer.addEventListener('click', function(event){
 })
 
 
-//Add div to filtered section 
+//Add div to filter section 
 //
 function renderInterview(){
     //every time the filter section will empty first
-    filteredSection.innerHTML = '';
+    filterSection.innerHTML = '';
+    if(interviewList.length == 0){
+            emptySection.classList.remove('hidden')
+            filterSection.classList.add('hidden')
+    }
 
     for(let interview of interviewList){
         let div = document.createElement('div');
@@ -215,14 +219,18 @@ function renderInterview(){
             </button>
           </div>
         `
-        filteredSection.appendChild(div);
+        filterSection.appendChild(div);
     }
 }
 
 
 function renderRejected(){
     //every time the filter section will empty first
-    filteredSection.innerHTML = '';
+    filterSection.innerHTML = '';
+      if(rejectList.length == 0){
+            emptySection.classList.remove('hidden')
+            filterSection.classList.add('hidden')
+        }
 
     for(let reject of rejectList){
         let div = document.createElement('div');
@@ -274,7 +282,7 @@ function renderRejected(){
             </button>
           </div>
         `
-        filteredSection.appendChild(div);
+        filterSection.appendChild(div);
     }
 }
 
