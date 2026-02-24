@@ -21,9 +21,9 @@ console.log(interviewList.length)
 console.log(rejectList.length)
 
 // Total job counter 
-totalList = allCards.children;
 
 function calculateCount(){
+  totalList = allCards.children;
   totalCount.forEach(i => {
   i.innerHTML = totalList.length;
   })
@@ -287,3 +287,15 @@ function renderRejected(){
 }
 
 
+
+//Delete btn function
+mainContainer.addEventListener('click', function(event){
+  const deleteBtn = event.target.closest('.deleteBtn')
+  if(deleteBtn){
+    const card = event.target.parentNode.parentNode.parentNode.parentNode;
+    
+    card.remove();
+    
+    calculateCount();
+  }
+})
