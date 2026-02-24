@@ -171,7 +171,7 @@ function renderInterview(){
 
     for(let interview of interviewList){
         let div = document.createElement('div');
-        div.className = "space-y-5 bg-white rounded-lg p-6 border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]";
+        div.className = "card-container space-y-5 bg-white rounded-lg p-6 border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]";
         div.innerHTML = `
         <div class="flex justify-between items-center">
             <div>
@@ -234,7 +234,7 @@ function renderRejected(){
 
     for(let reject of rejectList){
         let div = document.createElement('div');
-        div.className = "space-y-5 bg-white rounded-lg p-6 border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]";
+        div.className = "card-container space-y-5 bg-white rounded-lg p-6 border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]";
         div.innerHTML = `
         <div class="flex justify-between items-center">
             <div>
@@ -292,7 +292,12 @@ function renderRejected(){
 mainContainer.addEventListener('click', function(event){
   const deleteBtn = event.target.closest('.deleteBtn')
   if(deleteBtn){
-    const card = event.target.parentNode.parentNode.parentNode.parentNode;
+    const card = event.target.closest('.card-container');
+    const jobName = card.querySelector('.jobName').innerText;
+
+    interviewList = interviewList.filter(item => item.jobName !== jobName);
+
+    rejectList = rejectList.filter(item => item.jobName !== jobName);
     
     card.remove();
     
