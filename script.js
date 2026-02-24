@@ -17,11 +17,7 @@ const allCards = document.getElementById('allCards');
 const emptySection = document.getElementById('empty-section');
 const filterSection = document.getElementById('filter-section');
 
-console.log(interviewList.length)
-console.log(rejectList.length)
-
 // Total job counter 
-
 function calculateCount(){
   totalList = allCards.children;
   totalCount.forEach(i => {
@@ -32,11 +28,8 @@ function calculateCount(){
    //count interview
     rejectCount.innerText = rejectList.length;
 }
+
 calculateCount();
-
-
-// calculateCount();
- 
 
 
 //ToggleStyle
@@ -87,6 +80,7 @@ function toggleStyle(id){
 
 
 //click function
+//interView Btn function
 mainContainer.addEventListener('click', function(event){
     if(event.target.classList.contains('interview-btn')){
         const parentNode = event.target.parentNode.parentNode;
@@ -113,7 +107,7 @@ mainContainer.addEventListener('click', function(event){
         if (!jobExist) {
             interviewList.push(cardInfo);
         }
-
+        //Filter if the element exist in rejectList
          rejectList = rejectList.filter(item => item.jobName !== cardInfo.jobName) 
 
         // after remove render the html
@@ -123,6 +117,7 @@ mainContainer.addEventListener('click', function(event){
         calculateCount();
     }
 
+    //reject btn function
     else if(event.target.classList.contains('reject-btn')){
         const parentNode = event.target.parentNode.parentNode;
         parentNode.className = "border-l-4 border-error card-container space-y-5 bg-white rounded-lg p-6 border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]";
@@ -147,10 +142,9 @@ mainContainer.addEventListener('click', function(event){
         if (!jobExist) {
             rejectList.push(cardInfo);
         }
-
+        //Filter if the element exist in interviewList
          interviewList = interviewList.filter(item => item.jobName != cardInfo.jobName)
 
-        // after remove rerender the html
         if (currentStatus == 'interview-filter-btn') {
             renderInterview()
         }
@@ -159,8 +153,6 @@ mainContainer.addEventListener('click', function(event){
 })
 
 
-//Add div to filter section 
-//
 function renderInterview(){
     //every time the filter section will empty first
     filterSection.innerHTML = '';
@@ -286,8 +278,6 @@ function renderRejected(){
     }
 }
 
-
-
 //Delete btn function
 mainContainer.addEventListener('click', function(event){
   const deleteBtn = event.target.closest('.deleteBtn')
@@ -296,7 +286,6 @@ mainContainer.addEventListener('click', function(event){
     const jobName = card.querySelector('.jobName').innerText;
 
     interviewList = interviewList.filter(item => item.jobName !== jobName);
-
     rejectList = rejectList.filter(item => item.jobName !== jobName);
     
     card.remove();
