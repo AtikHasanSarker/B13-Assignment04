@@ -90,7 +90,7 @@ function toggleStyle(id){
 mainContainer.addEventListener('click', function(event){
     if(event.target.classList.contains('interview-btn')){
         const parentNode = event.target.parentNode.parentNode;
-
+        parentNode.className = "border-l-4 border-success card-container space-y-5 bg-white rounded-lg p-6 border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]";
         const jobName = parentNode.querySelector('.jobName').innerText;
         const designation = parentNode.querySelector('.designation').innerText;
         const salary = parentNode.querySelector('.salary').innerText;
@@ -98,7 +98,7 @@ mainContainer.addEventListener('click', function(event){
         const notes = parentNode.querySelector('.notes').innerText;
 
         statusBox.innerText = 'INTERVIEW';
-        statusBox.className = "statusBox bg-white border border-[#10B981] text-[#10B981] font-medium text-[14px] px-3 py-2 rounded-md" 
+        statusBox.className = "statusBox btn btn-success font-medium text-[14px] px-3 py-2 rounded-md" 
         const statusText = statusBox.innerText;
         
         const cardInfo = {
@@ -125,7 +125,7 @@ mainContainer.addEventListener('click', function(event){
 
     else if(event.target.classList.contains('reject-btn')){
         const parentNode = event.target.parentNode.parentNode;
-
+        parentNode.className = "border-l-4 border-error card-container space-y-5 bg-white rounded-lg p-6 border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]";
         const jobName = parentNode.querySelector('.jobName').innerText;
         const designation = parentNode.querySelector('.designation').innerText;
         const salary = parentNode.querySelector('.salary').innerText;
@@ -133,7 +133,7 @@ mainContainer.addEventListener('click', function(event){
         const notes = parentNode.querySelector('.notes').innerText;
 
         statusBox.innerText = 'REJECTED';
-        statusBox.className = "statusBox bg-white border border-[#EF4444] text-[#EF4444] font-medium text-[14px] px-3 py-2 rounded-md";
+        statusBox.className = "statusBox btn btn-error font-medium text-[14px] px-3 py-2 rounded-md";
         const statusText = statusBox.innerText;
         const cardInfo = {
             jobName,
@@ -171,7 +171,7 @@ function renderInterview(){
 
     for(let interview of interviewList){
         let div = document.createElement('div');
-        div.className = "card-container space-y-5 bg-white rounded-lg p-6 border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]";
+        div.className = "border-l-4 border-success card-container space-y-5 bg-white rounded-lg p-6 border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]";
         div.innerHTML = `
         <div class="flex justify-between items-center">
             <div>
@@ -197,7 +197,7 @@ function renderInterview(){
 
           <div>
             <span
-              class="statusBox bg-white border border-[#10B981] text-[#10B981] font-medium text-[14px] px-3 py-2 rounded-md"
+              class="statusBox btn btn-success font-medium text-[14px] px-3 py-2 rounded-md"
               >${interview.status}</span
             >
             <p class="notes mt-2 text-[#323B49]">
@@ -234,7 +234,7 @@ function renderRejected(){
 
     for(let reject of rejectList){
         let div = document.createElement('div');
-        div.className = "card-container space-y-5 bg-white rounded-lg p-6 border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]";
+        div.className = "border-l-4 border-error card-container space-y-5 bg-white rounded-lg p-6 border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]";
         div.innerHTML = `
         <div class="flex justify-between items-center">
             <div>
@@ -260,7 +260,7 @@ function renderRejected(){
 
           <div>
             <span
-              class="statusBox bg-white border border-[#EF4444] text-[#EF4444] font-medium text-[14px] px-3 py-2 rounded-md"
+              class="statusBox btn btn-error font-medium text-[14px] px-3 py-2 rounded-md"
               >${reject.status}</span
             >
             <p class="notes mt-2 text-[#323B49]">
