@@ -46,7 +46,7 @@
 
     <hr class="border border-base-300 my-[30px] w-[70%] mx-auto" />
     <!-- main part -->
-    <main class="w-[70%] mx-auto">
+    <main id="main" class="w-[70%] mx-auto">
       <!-- navbar section  -->
       <div class="flex justify-between mb-6">
         <h3 class="font-semibold text-[20px] text-[#002C5C]">Available Jobs</h3>
@@ -85,12 +85,12 @@
         </div>
        </section>
       <!-- Filtered card -->
-      <section id="filtered-section" class="hidden"></section>
+      <section id="filtered-section" class="hidden space-y-4"></section>
 
       <!-- allCard section  -->
       <section id="allCards" class="space-y-4">
         <!-- card 1 -->
-        <div class="space-y-5 bg-white rounded-lg p-6  border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]">
+        <div class="space-y-5 bg-white rounded-lg p-6 border-2 border-base-300 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:border-[#526992ac]">
           <div class="flex justify-between items-center">
             <div>
               <h4 class="jobName font-semibold text-[18px] text-[#002C5C]">
@@ -127,7 +127,7 @@
           <!-- buttons -->
           <div class="flex gap-2">
             <button
-              class="interview-btn btn bg-white border border-[#10B981] px-3 py-2 text-[14px] rounded-md font-semibold text-[#10B981]"
+              class="interview-btn btn bg-white border border-[#10B981] text-[#10B981] px-3 py-2 text-[14px] rounded-md font-semibold"
             >
               INTERVIEW
             </button>
